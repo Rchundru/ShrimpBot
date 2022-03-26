@@ -4,7 +4,7 @@ const dotenv = require("dotenv")
 const { REST } = require("@discordjs/rest")
 const { Routes } = require("discord-api-types/v9")
 const { Player } = require("discord-player")
-const TOKEN = "secret"
+const TOKEN = "OTU2NTc4NzQ3ODQxMTM0NTkz.YjyRYQ.0a6qO1BQ1ILOBicaejJ1cvOMOH8"
 const client = new Discord.Client({
     intents: [
         "GUILDS",
@@ -49,7 +49,7 @@ if (LOAD_SLASH) {
 }else{
 client.on("ready", () => {
     console.log(`Logged in as ${client.user.tag}`)
-    client.user.setActivity("Made because of lah700");
+    client.user.setActivity("Made because of lah700 $about for help");
 })
 client.on("interactionCreate", (interaction) => {
     async function handleCommand() {
@@ -141,11 +141,35 @@ client.on("messageCreate", (message) => {
                 }
             });
         if(message.author.id==249753941535883264){
-            message.channel.send({content: "Getting all sciency are we Salah? It won't work! You have mentioned that crustacean"+count+" times now!", files: [ "./scrikmp.jpg"]})
+            message.channel.send({content: "Getting all sciency are we Salah? It won't work! You have mentioned that crustacean "+count+" times now!", files: [ "./scrikmp.jpg"]})
         }else{ 
             message.channel.send({content: "Nice try, I know what that means! It has been mentioned "+count+" times now!", files: [ "./scrikmp.jpg"]})
         }
     });
+    }
+    if(text.includes("camarón") || text.includes("camaron")){
+        //count++;
+        fs.readFile('shrimpCount.txt', function (err, data) {
+            if (err) {
+               return console.error(err);
+            }
+             var count = parseInt(data.toString());
+             count++;
+             fs.writeFile('shrimpCount.txt', count.toString(), function(err) {
+                if (err) {
+                   return console.error(err);
+                }
+            });
+        if(message.author.id==249753941535883264){
+            message.channel.send({content: "¡Hablar en español no me engañará, Salah! ¡Ya lo has dicho "+count+" veces!", files: [ "./spanishGru.jpg"]})
+        }else{ 
+            message.channel.send({content: "¡Hablar español no funcionará! Se ha mencionado "+count+" tomos ahora.", files: [ "./spanishGru.jpg"]})
+        }
+    });
+    }
+    if((text.includes("bitch") || text.includes("hoe")) && message.author.id==513466168154128415){
+        //count++;
+        message.reply("No u");
     }
     if(text.includes("$about")){
         message.reply("A bot created by Rohit & Mitch because Salah is obsessed with shrimp. Will keep track of the number of times shrimp has been said")
