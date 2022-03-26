@@ -4,7 +4,8 @@ const dotenv = require("dotenv")
 const { REST } = require("@discordjs/rest")
 const { Routes } = require("discord-api-types/v9")
 const { Player } = require("discord-player")
-const TOKEN = "secret"
+var fs = require("fs");
+const TOKEN = fs.readFileSync('./token.txt', "utf8").toString()
 const client = new Discord.Client({
     intents: [
         "GUILDS",
@@ -22,7 +23,6 @@ client.player = new Player(client, {
 const LOAD_SLASH = process.argv[2] == 'load'
 const CLIENT_ID = "956578747841134593"
 const GUILD_ID = "513466762004791300"
-var fs = require("fs");
 const { loadavg } = require("os")
 let commands = []
 const slashFiles = fs.readdirSync("./slash").filter(file => file.endsWith(".js"))
