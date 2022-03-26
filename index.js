@@ -4,7 +4,7 @@ const dotenv = require("dotenv")
 const { REST } = require("@discordjs/rest")
 const { Routes } = require("discord-api-types/v9")
 const { Player } = require("discord-player")
-const TOKEN = "OTU2NTc4NzQ3ODQxMTM0NTkz.YjyRYQ.0a6qO1BQ1ILOBicaejJ1cvOMOH8"
+const TOKEN = "secret"
 const client = new Discord.Client({
     intents: [
         "GUILDS",
