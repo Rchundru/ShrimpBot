@@ -151,6 +151,16 @@ client.on("messageCreate", (message) => {
     }
     if(message.author.id==249753941535883264){
         var value = Math.floor(Math.random() * 101);
+        var msgCount = parseInt(fs.readFileSync('./salahTextCount.txt', "utf8").toString())
+        msgCount++
+        fs.writeFile('./salahTextCount.txt', msgCount.toString(), function(err) {
+            if (err) {
+               return console.error(err);
+            }
+        });
+        if(msgCount % 50 ==0){
+            message.author.send("I'm on to you Salah");
+        }
         if(value==69){
             message.reply("Hey Salah, want to play Valorant?")
         }
