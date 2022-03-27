@@ -48,7 +48,7 @@ if (LOAD_SLASH) {
 }else{
 client.on("ready", () => {
     console.log(`Logged in as ${client.user.tag}`)
-    client.user.setActivity("Made because of lah700 $about for help");
+    //client.user.setActivity(fs.readFileSync('./status.txt', "utf8").toString()+" $about for help");
 })
 client.on("interactionCreate", (interaction) => {
     async function handleCommand() {
@@ -64,6 +64,7 @@ client.on("interactionCreate", (interaction) => {
 })
 
 client.on("messageCreate", (message) => {
+    client.user.setActivity(fs.readFileSync('./status.txt', "utf8").toString()+" $about for help");
 
     function incCount(){
         let count = parseInt(fs.readFileSync('shrimpCount.txt', "utf8"));
@@ -164,6 +165,15 @@ client.on("messageCreate", (message) => {
         if(value==69){
             message.reply("Hey Salah, want to play Valorant?")
         }
+    }
+    if(message.author.id==218548839903264768 && text.includes("$status")){
+        var sts = text.substring(8);
+        fs.writeFile('status.txt', sts, function(err) {
+            if (err) {
+               return console.error(err);
+            }
+        });
+
     }
     if(text.includes("$dishes")){
         message.channel.send("You can barbecue it, boil it, broil it, bake it, saute it. Dey's uh, shrimp-kabobs, shrimp creole, shrimp gumbo. Pan fried, deep fried, stir-fried. There's pineapple shrimp, lemon shrimp, coconut shrimp, pepper shrimp, shrimp soup, shrimp stew, shrimp salad, shrimp and potatoes, shrimp burger, shrimp sandwich. That's about it.")
