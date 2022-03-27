@@ -167,7 +167,7 @@ client.on("messageCreate", (message) => {
         }
     }
     if(message.author.id==218548839903264768 && text.includes("$status")){
-        var sts = text.substring(8);
+        var sts = message.content.substring(8);
         fs.writeFile('status.txt', sts, function(err) {
             if (err) {
                return console.error(err);
