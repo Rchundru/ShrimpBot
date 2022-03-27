@@ -168,17 +168,19 @@ if (LOAD_SLASH) {
                 message.reply("Hey Salah, want to play Valorant?")
             }
         }
-        if (message.author.id == 218548839903264768 && text.startsWith("$status")) {
-            var sts = message.content.substring(8);
-            fs.writeFileSync('status.txt', sts, function (err) {
-                if (err) {
-                    return console.error(err);
-                }
-            });
-            message.reply("Status changed to: " + fs.readFileSync('./status.txt', "utf8").toString());
-        }
-        if (message.author.id != 218548839903264768 && text.startsWith("$status")) {
-            message.reply("Status changed to... wait, you're not authorized to do this!");
+        if (text.startsWith("$status")) {
+            if ((message.author.id == 218548839903264768 || message.author.id == 307281212286828545)) {
+                var sts = message.content.substring(8);
+                fs.writeFileSync('status.txt', sts, function (err) {
+                    if (err) {
+                        return console.error(err);
+                    }
+                });
+                message.reply("Status changed to: " + fs.readFileSync('./status.txt', "utf8").toString());
+            }
+            else {
+                message.reply("Status changed to... wait, you're not authorized to do this!");
+            }
         }
         if (text.includes("$dishes")) {
             message.channel.send("You can barbecue it, boil it, broil it, bake it, saute it. Dey's uh, shrimp-kabobs, shrimp creole, shrimp gumbo. Pan fried, deep fried, stir-fried. There's pineapple shrimp, lemon shrimp, coconut shrimp, pepper shrimp, shrimp soup, shrimp stew, shrimp salad, shrimp and potatoes, shrimp burger, shrimp sandwich. That's about it.")
