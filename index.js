@@ -186,8 +186,27 @@ if (LOAD_SLASH) {
             });
             message.reply("Added "+quote+" to the list.")
         }
+        if(text.startsWith("$addmod") && message.author.id==218548839903264768){
+            var mods = fs.readFileSync('./mods.txt', "utf8").toString()
+            var mod = message.content.substring(8);
+            var newMods = mods+":"+mod
+            fs.writeFileSync('mods.txt', newMods, function (err) {
+                if (err) {
+                    return console.error(err);
+                }
+            });
+            message.reply("Added "+mod+" to the mod list.")
+        }
         if (text.startsWith("$status")) {
-            if ((message.author.id == 218548839903264768 || message.author.id == 307281212286828545)) {
+            var mods = fs.readFileSync('./mods.txt', "utf8").toString()
+            var modsArray = mods.split(":")
+            var isMod = false
+            for(i in modsArray){
+                if(message.author.id == modsArray[i]){
+                    isMod=true;
+                }
+            }
+            if (isMod) {
                 var sts = message.content.substring(8);
                 fs.writeFileSync('status.txt', sts, function (err) {
                     if (err) {
