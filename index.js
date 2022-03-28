@@ -136,6 +136,7 @@ if (LOAD_SLASH) {
             message.reply("Flip a coin using $coin")
             message.reply("Learn about shrimp dishes using $dishes")
             message.reply("Roll dice using $dice")
+            message.reply("Receive a quote said by a member of this server with $quote, add a new quote to the list with $addquote")
             message.reply("Play music using /play song or /play search")
         }
         if (text.includes("$coin")) {
