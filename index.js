@@ -48,7 +48,7 @@ if (LOAD_SLASH) {
 } else {
     client.on("ready", () => {
         console.log(`Logged in as ${client.user.tag}`)
-        //client.user.setActivity(fs.readFileSync('./status.txt', "utf8").toString()+" $about for help");
+        client.user.setActivity(fs.readFileSync('./status.txt', "utf8").toString()+" $about for help");
     })
     client.on("interactionCreate", (interaction) => {
         async function handleCommand() {
