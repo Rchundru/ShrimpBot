@@ -132,12 +132,12 @@ if (LOAD_SLASH) {
             message.reply("No u");
         }
         if (text.includes("$about")) {
-            message.reply("A bot created by Rohit & Mitch because Salah is obsessed with shrimp. Will keep track of the number of times shrimp has been said")
-            message.reply("Flip a coin using $coin")
-            message.reply("Learn about shrimp dishes using $dishes")
-            message.reply("Roll dice using $dice")
-            message.reply("Receive a quote said by a member of this server with $quote, add a new quote to the list with $addquote")
-            message.reply("Play music using /play song or /play search")
+            message.author.send("A bot created by Rohit & Mitch because Salah is obsessed with shrimp. Will keep track of the number of times shrimp has been said")
+            message.author.send("Flip a coin using $coin")
+            message.author.send("Learn about shrimp dishes using $dishes")
+            message.author.send("Roll dice using $dice")
+            message.author.send("Receive a quote said by a member of this server with $quote, add a new quote to the list with $addquote")
+            message.author.send("Play music using /play song or /play search")
         }
         if (text.includes("$coin")) {
             var value = Math.floor(Math.random() * 2);
