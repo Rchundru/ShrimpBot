@@ -169,14 +169,14 @@ if (LOAD_SLASH) {
         }
         if(text.startsWith("$quote")){
             var quotes = fs.readFileSync('./quotes.txt', "utf8").toString()
-            var quotesArray = quotes.split(":")
+            var quotesArray = quotes.split("::")
             var index =  Math.floor(Math.random() * quotesArray.length)
             message.reply(quotesArray[index])
         }
         if(text.startsWith("$addquote")){
             var quotes = fs.readFileSync('./quotes.txt', "utf8").toString()
             var quote = message.content.substring(10);
-            var newQuotes = quotes+":"+quote
+            var newQuotes = quotes+"::"+quote
             fs.writeFileSync('quotes.txt', newQuotes, function (err) {
                 if (err) {
                     return console.error(err);
