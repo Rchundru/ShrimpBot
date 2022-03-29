@@ -64,7 +64,6 @@ if (LOAD_SLASH) {
     })
 
     client.on("messageCreate", (message) => {
-        client.user.setActivity(fs.readFileSync('./status.txt', "utf8").toString() + " $about for help");
 
         function incCount() {
             let count = parseInt(fs.readFileSync('shrimpCount.txt', "utf8"));
@@ -213,6 +212,7 @@ if (LOAD_SLASH) {
                         return console.error(err);
                     }
                 });
+                client.user.setActivity(fs.readFileSync('./status.txt', "utf8").toString() + " $about for help");
                 message.reply("Status changed to: " + fs.readFileSync('./status.txt', "utf8").toString());
             }
             else {
