@@ -149,8 +149,7 @@ if (LOAD_SLASH) {
         if (text.includes("$dice")) {
             var die1 = Math.floor(Math.random() * 6) + 1;
             var die2 = Math.floor(Math.random() * 6) + 1;
-            var total = die1 + die2;
-            message.reply("Die 1: " + die1 + " | " + "Die 2: " + die2 + " | " + "Total: " + total);
+            message.reply({ content: "Rolled Dice" , files: ["./"+die1.toString()+".png", "./"+die2.toString()+".png"] })
         }
         if (message.author.id == 249753941535883264) {
             var value = Math.floor(Math.random() * 101);
