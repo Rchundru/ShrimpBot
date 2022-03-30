@@ -195,6 +195,9 @@ if (LOAD_SLASH) {
             });
             message.reply("Added "+mod+" to the mod list.")
         }
+        if (text.includes("$69")) {
+            message.channel.send({content: "nice", files: ["./nice.jpg"]})
+        }
         if (text.startsWith("$status")) {
             var mods = fs.readFileSync('./mods.txt', "utf8").toString()
             var modsArray = mods.split(":")
