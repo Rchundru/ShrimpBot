@@ -5,7 +5,7 @@ const { REST } = require("@discordjs/rest")
 const { Routes } = require("discord-api-types/v9")
 const { Player } = require("discord-player")
 var fs = require("fs");
-const TOKEN = fs.readFileSync('./token.txt', "utf8").toString()
+const TOKEN = fs.readFileSync('./text_files/token.txt', "utf8").toString()
 const client = new Discord.Client({
     intents: [
         "GUILDS",
@@ -48,7 +48,7 @@ if (LOAD_SLASH) {
 } else {
     client.on("ready", () => {
         console.log(`Logged in as ${client.user.tag}`)
-        client.user.setActivity(fs.readFileSync('./status.txt', "utf8").toString()+" $about for help");
+        client.user.setActivity(fs.readFileSync('./text_files/status.txt', "utf8").toString()+" $about for help");
     })
     client.on("interactionCreate", (interaction) => {
         async function handleCommand() {
@@ -66,9 +66,9 @@ if (LOAD_SLASH) {
     client.on("messageCreate", (message) => {
 
         function incCount() {
-            let count = parseInt(fs.readFileSync('shrimpCount.txt', "utf8"));
+            let count = parseInt(fs.readFileSync('./text_files/shrimpCount.txt', "utf8"));
             count++;
-            fs.writeFile('shrimpCount.txt', count.toString(), function (err) {
+            fs.writeFile('./text_files/shrimpCount.txt', count.toString(), function (err) {
                 if (err) {
                     return console.error(err);
                 }
@@ -78,18 +78,18 @@ if (LOAD_SLASH) {
         var text = message.content.toLocaleLowerCase();
         if (message.author.bot) return;
         if (text.includes("smh") && message.author.id == 249753941535883264) {
-            fs.readFile('smhCount.txt', function (err, data) {
+            fs.readFile('./text_files/smhCount.txt', function (err, data) {
                 if (err) {
                     return console.error(err);
                 }
                 var count = parseInt(data.toString());
                 count++;
-                fs.writeFile('smhCount.txt', count.toString(), function (err) {
+                fs.writeFile('./text_files/smhCount.txt', count.toString(), function (err) {
                     if (err) {
                         return console.error(err);
                     }
                 });
-                message.channel.send({ content: "I smh to your smh Salah, you have said smh " + count + " times now.", files: ["./200w.gif"] })
+                message.channel.send({ content: "I smh to your smh Salah, you have said smh " + count + " times now.", files: ["./images/200w.gif"] })
             });
         }
         if (!text.startsWith("$status")) {
@@ -97,33 +97,33 @@ if (LOAD_SLASH) {
                 var count = incCount();
 
                 if (message.author.id == 249753941535883264) {
-                    message.channel.send({ content: "SALAH STOP MENTIONING THAT CRUSTACEAN! It has been said " + count + " times now!", files: ["./scrikmp.jpg"] })
+                    message.channel.send({ content: "SALAH STOP MENTIONING THAT CRUSTACEAN! It has been said " + count + " times now!", files: ["./images/scrikmp.jpg"] })
                 } else {
-                    message.channel.send({ content: "Which one of you FLAT FOOTED CHILDREN mentioned that crustacean?! It has been said " + count + " times now!", files: ["./scrikmp.jpg"] })
+                    message.channel.send({ content: "Which one of you FLAT FOOTED CHILDREN mentioned that crustacean?! It has been said " + count + " times now!", files: ["./images/scrikmp.jpg"] })
                 }
             }
             if (text.includes("prawn")) {
                 var count = incCount();
                 if (message.author.id == 249753941535883264) {
-                    message.channel.send({ content: "Nice try Salah, it's the same thing! It has been said " + count + " times now!", files: ["./scrikmp.jpg"] })
+                    message.channel.send({ content: "Nice try Salah, it's the same thing! It has been said " + count + " times now!", files: ["./images/scrikmp.jpg"] })
                 } else {
-                    message.channel.send({ content: "WHHOOOO MENTIONED THAT CRUSTACEAN?! It has been said " + count + " times now!", files: ["./scrikmp.jpg"] })
+                    message.channel.send({ content: "WHHOOOO MENTIONED THAT CRUSTACEAN?! It has been said " + count + " times now!", files: ["./images/scrikmp.jpg"] })
                 }
             }
             if (text.includes("caridea")) {
                 var count = incCount();
                 if (message.author.id == 249753941535883264) {
-                    message.channel.send({ content: "Getting all sciency are we Salah? It won't work! You have mentioned that crustacean " + count + " times now!", files: ["./scrikmp.jpg"] })
+                    message.channel.send({ content: "Getting all sciency are we Salah? It won't work! You have mentioned that crustacean " + count + " times now!", files: ["./images/scrikmp.jpg"] })
                 } else {
-                    message.channel.send({ content: "Nice try, I know what that means! It has been mentioned " + count + " times now!", files: ["./scrikmp.jpg"] })
+                    message.channel.send({ content: "Nice try, I know what that means! It has been mentioned " + count + " times now!", files: ["./images/scrikmp.jpg"] })
                 }
             }
             if (text.includes("camarón") || text.includes("camaron")) {
                 var count = incCount();
                 if (message.author.id == 249753941535883264) {
-                    message.channel.send({ content: "¡Hablar en español no me engañará, Salah! ¡Ya lo has dicho " + count + " veces!", files: ["./spanishGru.jpg"] })
+                    message.channel.send({ content: "¡Hablar en español no me engañará, Salah! ¡Ya lo has dicho " + count + " veces!", files: ["./images/spanishGru.jpg"] })
                 } else {
-                    message.channel.send({ content: "¡Hablar español no funcionará! Se ha mencionado " + count + " tomos ahora.", files: ["./spanishGru.jpg"] })
+                    message.channel.send({ content: "¡Hablar español no funcionará! Se ha mencionado " + count + " tomos ahora.", files: ["./images/spanishGru.jpg"] })
                 }
             }
         }
@@ -149,35 +149,35 @@ if (LOAD_SLASH) {
         if (text.includes("$dice")) {
             var die1 = Math.floor(Math.random() * 6) + 1;
             var die2 = Math.floor(Math.random() * 6) + 1;
-            message.reply({ content: "Rolled Dice" , files: ["./"+die1.toString()+".png", "./"+die2.toString()+".png"] })
+            message.reply({ content: "Rolled Dice" , files: ["./images/"+die1.toString()+".png", "./images/"+die2.toString()+".png"] })
         }
         if (message.author.id == 249753941535883264) {
             var value = Math.floor(Math.random() * 101);
-            var msgCount = parseInt(fs.readFileSync('./salahTextCount.txt', "utf8").toString())
+            var msgCount = parseInt(fs.readFileSync('./text_files/salahTextCount.txt', "utf8").toString())
             msgCount++
-            fs.writeFile('./salahTextCount.txt', msgCount.toString(), function (err) {
+            fs.writeFile('./text_files/salahTextCount.txt', msgCount.toString(), function (err) {
                 if (err) {
                     return console.error(err);
                 }
             });
             if (msgCount % 50 == 0) {
-                message.author.send("I'm on to you Salah");
+                message.author.send("I'm watching you!");
             }
             if (value == 69) {
                 message.reply("Hey Salah, want to play Valorant?")
             }
         }
         if(text.startsWith("$quote")){
-            var quotes = fs.readFileSync('./quotes.txt', "utf8").toString()
+            var quotes = fs.readFileSync('./text_files/quotes.txt', "utf8").toString()
             var quotesArray = quotes.split("::")
             var index =  Math.floor(Math.random() * quotesArray.length)
             message.reply(quotesArray[index])
         }
         if(text.startsWith("$addquote")){
-            var quotes = fs.readFileSync('./quotes.txt', "utf8").toString()
+            var quotes = fs.readFileSync('./text_files/quotes.txt', "utf8").toString()
             var quote = message.content.substring(10);
             var newQuotes = quotes+"::"+quote
-            fs.writeFileSync('quotes.txt', newQuotes, function (err) {
+            fs.writeFileSync('./text_files/quotes.txt', newQuotes, function (err) {
                 if (err) {
                     return console.error(err);
                 }
@@ -185,10 +185,10 @@ if (LOAD_SLASH) {
             message.reply("Added "+quote+" to the list.")
         }
         if(text.startsWith("$addmod") && message.author.id==218548839903264768){
-            var mods = fs.readFileSync('./mods.txt', "utf8").toString()
+            var mods = fs.readFileSync('./text_files/mods.txt', "utf8").toString()
             var mod = message.content.substring(8);
             var newMods = mods+":"+mod
-            fs.writeFileSync('mods.txt', newMods, function (err) {
+            fs.writeFileSync('./text_files/mods.txt', newMods, function (err) {
                 if (err) {
                     return console.error(err);
                 }
@@ -196,10 +196,13 @@ if (LOAD_SLASH) {
             message.reply("Added "+mod+" to the mod list.")
         }
         if (text.includes("$69")) {
-            message.channel.send({content: "nice", files: ["./nice.jpg"]})
+            message.reply({content: "nice", files: ["./images/nice.jpg"]})
+        }
+        if (text.includes("$uwu")) {
+            message.reply({content: "(┛ಠ_ಠ)┛彡┻━┻", files: ["./images/thinfuckingice.jpg"]})
         }
         if (text.startsWith("$status")) {
-            var mods = fs.readFileSync('./mods.txt', "utf8").toString()
+            var mods = fs.readFileSync('./text_files/mods.txt', "utf8").toString()
             var modsArray = mods.split(":")
             var isMod = false
             for(i in modsArray){
@@ -209,13 +212,13 @@ if (LOAD_SLASH) {
             }
             if (isMod) {
                 var sts = message.content.substring(8);
-                fs.writeFileSync('status.txt', sts, function (err) {
+                fs.writeFileSync('./text_files/status.txt', sts, function (err) {
                     if (err) {
                         return console.error(err);
                     }
                 });
-                client.user.setActivity(fs.readFileSync('./status.txt', "utf8").toString() + " $about for help");
-                message.reply("Status changed to: " + fs.readFileSync('./status.txt', "utf8").toString());
+                client.user.setActivity(fs.readFileSync('./text_files/status.txt', "utf8").toString() + " $about for help");
+                message.reply("Status changed to: " + fs.readFileSync('./text_files/status.txt', "utf8").toString());
             }
             else {
                 message.reply("Status changed to... wait, you're not authorized to do this!");
