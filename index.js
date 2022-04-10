@@ -161,7 +161,7 @@ if (LOAD_SLASH) {
                 }
             });
             if (msgCount % 50 == 0) {
-                message.author.send("I'm watching you!");
+                message.author.send("You're on thin ice!");
             }
             if (value == 69) {
                 message.reply("Hey Salah, want to play Valorant?")
@@ -172,6 +172,7 @@ if (LOAD_SLASH) {
             var quotesArray = quotes.split("::")
             var index =  Math.floor(Math.random() * quotesArray.length)
             message.reply(quotesArray[index])
+ 
         }
         if(text.startsWith("$addquote")){
             var quotes = fs.readFileSync('./text_files/quotes.txt', "utf8").toString()
@@ -182,7 +183,14 @@ if (LOAD_SLASH) {
                     return console.error(err);
                 }
             });
-            message.reply("Added "+quote+" to the list.")
+            var quotes = fs.readFileSync('./text_files/quotes.txt', "utf8").toString()
+            var quotesArray = quotes.split("::")
+            if(quotesArray[quotesArray.length-1]==quote){
+                message.reply("Added "+quote+" to the list.")
+            }else{
+                message.reply('Something went wrong, please try again or contact <@218548839903264768>');
+            }
+            
         }
         if(text.startsWith("$addmod") && message.author.id==218548839903264768){
             var mods = fs.readFileSync('./text_files/mods.txt', "utf8").toString()
@@ -193,13 +201,23 @@ if (LOAD_SLASH) {
                     return console.error(err);
                 }
             });
-            message.reply("Added "+mod+" to the mod list.")
+            var mods = fs.readFileSync('./text_files/mods.txt', "utf8").toString()
+            var modsArray = mods.split(":")
+            if(modsArray[modsArray.length-1]==mod){
+                message.reply("Added "+mod+" to the mod list.")
+            }
         }
         if (text.includes("$69")) {
             message.reply({content: "nice", files: ["./images/nice.jpg"]})
         }
+        if(text.startsWith("69")){
+            message.reply("Nice.")
+        }
         if (text.includes("$uwu")) {
             message.reply({content: "(┛ಠ_ಠ)┛彡┻━┻", files: ["./images/thinfuckingice.jpg"]})
+        }
+        if(text.includes("$bait")){
+            message.reply({content: "POV: You were just baited by Salah", files: ["./images/bait.gif"]})
         }
         if (text.startsWith("$status")) {
             var mods = fs.readFileSync('./text_files/mods.txt', "utf8").toString()
