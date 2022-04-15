@@ -127,7 +127,7 @@ if (LOAD_SLASH) {
                 }
             }
         }
-        if ((text.includes("bitch") || text.includes("hoe")) && message.author.id == 513466168154128415) {
+        if ((text.includes("bitch") || text.includes("hoe") || text.includes("slut")) && message.author.id == 513466168154128415) {
             message.reply("No u");
         }
         if (text.includes("$about")) {
@@ -161,7 +161,7 @@ if (LOAD_SLASH) {
                 }
             });
             if (msgCount % 50 == 0) {
-                message.author.send("You're on thin ice!");
+                message.author.send("What did I say!");
             }
             if (value == 69) {
                 message.reply("Hey Salah, want to play Valorant?")

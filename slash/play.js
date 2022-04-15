@@ -1,6 +1,7 @@
 const { SlashCommandBuilder } = require("@discordjs/builders")
 const { MessageEmbed } = require("discord.js")
 const { QueryType } = require("discord-player")
+const playdl = require("play-dl");
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -29,7 +30,14 @@ module.exports = {
 	run: async ({ client, interaction }) => {
 		if (!interaction.member.voice.channel) return interaction.editReply("You need to be in a VC to use this command")
 
-		const queue = await client.player.createQueue(interaction.guild)
+		const queue = await client.player.createQueue(interaction.guild,{async onBeforeCreateStream(track, source, _queue) {
+            // only trap youtube source
+            if (source === "youtube") {
+                // track here would be youtube track
+                return (await playdl.stream(track.url, { discordPlayerCompatibility : true })).stream;
+                // we must return readable stream or void (returning void means telling discord-player to look for default extractor)
+            }
+        }})
 		if (!queue.connection) await queue.connect(interaction.member.voice.channel)
 
 		let embed = new MessageEmbed()
