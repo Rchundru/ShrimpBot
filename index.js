@@ -68,7 +68,7 @@ if (LOAD_SLASH) {
         function incCount() {
             let count = parseInt(fs.readFileSync('./text_files/shrimpCount.txt', "utf8"));
             count++;
-            fs.writeFile('./text_files/shrimpCount.txt', count.toString(), function (err) {
+            fs.writeFileSync('./text_files/shrimpCount.txt', count.toString(), function (err) {
                 if (err) {
                     return console.error(err);
                 }
@@ -76,6 +76,7 @@ if (LOAD_SLASH) {
             return count;
         }
         var text = message.content.toLocaleLowerCase();
+        var words = text.split(" ");
         if (message.author.bot) return;
         if (text.includes("smh") && message.author.id == 249753941535883264) {
             fs.readFile('./text_files/smhCount.txt', function (err, data) {
@@ -94,7 +95,12 @@ if (LOAD_SLASH) {
         }
         if (!text.startsWith("$status")) {
             if (text.includes("shrimp")) {
-                var count = incCount();
+                var count = 0
+                for(var i=0; i<words.length; i++){
+                    if(words[i].includes("shrimp")){
+                        count = incCount();
+                    }
+                }
 
                 if (message.author.id == 249753941535883264) {
                     message.channel.send({ content: "SALAH STOP MENTIONING THAT CRUSTACEAN! It has been said " + count + " times now!", files: ["./images/scrikmp.jpg"] })
@@ -103,7 +109,12 @@ if (LOAD_SLASH) {
                 }
             }
             if (text.includes("prawn")) {
-                var count = incCount();
+                var count = 0
+                for(var i=0; i<words.length; i++){
+                    if(words[i].includes("prawn")){
+                        count = incCount();
+                    }
+                }
                 if (message.author.id == 249753941535883264) {
                     message.channel.send({ content: "Nice try Salah, it's the same thing! It has been said " + count + " times now!", files: ["./images/scrikmp.jpg"] })
                 } else {
@@ -111,7 +122,12 @@ if (LOAD_SLASH) {
                 }
             }
             if (text.includes("caridea")) {
-                var count = incCount();
+                var count = 0
+                for(var i=0; i<words.length; i++){
+                    if(words[i].includes("caridea")){
+                        count = incCount();
+                    }
+                }
                 if (message.author.id == 249753941535883264) {
                     message.channel.send({ content: "Getting all sciency are we Salah? It won't work! You have mentioned that crustacean " + count + " times now!", files: ["./images/scrikmp.jpg"] })
                 } else {
@@ -119,7 +135,12 @@ if (LOAD_SLASH) {
                 }
             }
             if (text.includes("camarón") || text.includes("camaron")) {
-                var count = incCount();
+                var count = 0
+                for(var i=0; i<words.length; i++){
+                    if(words[i].includes("camarón") || words[i].includes("camaron")){
+                        count = incCount();
+                    }
+                }
                 if (message.author.id == 249753941535883264) {
                     message.channel.send({ content: "¡Hablar en español no me engañará, Salah! ¡Ya lo has dicho " + count + " veces!", files: ["./images/spanishGru.jpg"] })
                 } else {
