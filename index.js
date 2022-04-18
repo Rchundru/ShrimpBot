@@ -10,7 +10,8 @@ const client = new Discord.Client({
     intents: [
         "GUILDS",
         "GUILD_MESSAGES",
-        "GUILD_VOICE_STATES"
+        "GUILD_VOICE_STATES",
+        "GUILD_MEMBERS"
     ]
 })
 client.slashcommands = new Discord.Collection();
@@ -50,6 +51,12 @@ if (LOAD_SLASH) {
         console.log(`Logged in as ${client.user.tag}`)
         client.user.setActivity(fs.readFileSync('./text_files/status.txt', "utf8").toString()+" $about for help");
     })
+    const channelId = "513466762004791302";
+    client.on("guildMemberAdd", (member) => {
+        const message = `Welcome to HinduBoiz <@${member.id}>! Remember to go peepee when you poopoo.`;
+        const channel = member.guild.channels.cache.get(channelId);
+        channel.send({content: message , files: ["./images/hey.jpg"]});
+    });
     client.on("interactionCreate", (interaction) => {
         async function handleCommand() {
             if (!interaction.isCommand()) return
