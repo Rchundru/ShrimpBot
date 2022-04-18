@@ -77,6 +77,13 @@ if (LOAD_SLASH) {
         }
         var text = message.content.toLocaleLowerCase();
         var words = text.split(" ");
+        var shrimpCount = 0;
+        for(var i=0; i<words.length; i++){
+            if(words[i].includes("shrimp") || words[i].includes("prawn") || words[i].includes("caridea") || words[i].includes("camarón") || words[i].includes("camaron")){
+                shrimpCount = incCount();
+            }
+        }
+        var responded = false;
         if (message.author.bot) return;
         if (text.includes("smh") && message.author.id == 249753941535883264) {
             fs.readFile('./text_files/smhCount.txt', function (err, data) {
@@ -95,56 +102,39 @@ if (LOAD_SLASH) {
         }
         if (!text.startsWith("$status")) {
             if (text.includes("shrimp")) {
-                var count = 0
-                for(var i=0; i<words.length; i++){
-                    if(words[i].includes("shrimp")){
-                        count = incCount();
-                    }
-                }
-
-                if (message.author.id == 249753941535883264) {
-                    message.channel.send({ content: "SALAH STOP MENTIONING THAT CRUSTACEAN! It has been said " + count + " times now!", files: ["./images/scrikmp.jpg"] })
-                } else {
-                    message.channel.send({ content: "Which one of you FLAT FOOTED CHILDREN mentioned that crustacean?! It has been said " + count + " times now!", files: ["./images/scrikmp.jpg"] })
+                if (message.author.id == 249753941535883264 && !responded) {
+                    message.channel.send({ content: "SALAH STOP MENTIONING THAT CRUSTACEAN! It has been said " + shrimpCount + " times now!", files: ["./images/scrikmp.jpg"] })
+                    responded=true;
+                }else if(!responded) {
+                    message.channel.send({ content: "Which one of you FLAT FOOTED CHILDREN mentioned that crustacean?! It has been said " + shrimpCount + " times now!", files: ["./images/scrikmp.jpg"] })
+                    responded=true;
                 }
             }
             if (text.includes("prawn")) {
-                var count = 0
-                for(var i=0; i<words.length; i++){
-                    if(words[i].includes("prawn")){
-                        count = incCount();
-                    }
-                }
-                if (message.author.id == 249753941535883264) {
-                    message.channel.send({ content: "Nice try Salah, it's the same thing! It has been said " + count + " times now!", files: ["./images/scrikmp.jpg"] })
-                } else {
-                    message.channel.send({ content: "WHHOOOO MENTIONED THAT CRUSTACEAN?! It has been said " + count + " times now!", files: ["./images/scrikmp.jpg"] })
+                if (message.author.id == 249753941535883264 && !responded) {
+                    message.channel.send({ content: "Nice try Salah, it's the same thing! It has been said " + shrimpCount + " times now!", files: ["./images/scrikmp.jpg"] })
+                    responded=true;
+                } else if(!responded){
+                    message.channel.send({ content: "WHHOOOO MENTIONED THAT CRUSTACEAN?! It has been said " + shrimpCount + " times now!", files: ["./images/scrikmp.jpg"] })
+                    responded=true;
                 }
             }
             if (text.includes("caridea")) {
-                var count = 0
-                for(var i=0; i<words.length; i++){
-                    if(words[i].includes("caridea")){
-                        count = incCount();
-                    }
-                }
-                if (message.author.id == 249753941535883264) {
-                    message.channel.send({ content: "Getting all sciency are we Salah? It won't work! You have mentioned that crustacean " + count + " times now!", files: ["./images/scrikmp.jpg"] })
-                } else {
-                    message.channel.send({ content: "Nice try, I know what that means! It has been mentioned " + count + " times now!", files: ["./images/scrikmp.jpg"] })
+                if (message.author.id == 249753941535883264 && !responded) {
+                    message.channel.send({ content: "Getting all sciency are we Salah? It won't work! You have mentioned that crustacean " + shrimpCount + " times now!", files: ["./images/scrikmp.jpg"] })
+                    responded =true;
+                } else if(!responded){
+                    message.channel.send({ content: "Nice try, I know what that means! It has been mentioned " + shrimpCount + " times now!", files: ["./images/scrikmp.jpg"] })
+                    responded=true;
                 }
             }
             if (text.includes("camarón") || text.includes("camaron")) {
-                var count = 0
-                for(var i=0; i<words.length; i++){
-                    if(words[i].includes("camarón") || words[i].includes("camaron")){
-                        count = incCount();
-                    }
-                }
-                if (message.author.id == 249753941535883264) {
-                    message.channel.send({ content: "¡Hablar en español no me engañará, Salah! ¡Ya lo has dicho " + count + " veces!", files: ["./images/spanishGru.jpg"] })
-                } else {
-                    message.channel.send({ content: "¡Hablar español no funcionará! Se ha mencionado " + count + " tomos ahora.", files: ["./images/spanishGru.jpg"] })
+                if (message.author.id == 249753941535883264 && !responded) {
+                    message.channel.send({ content: "¡Hablar en español no me engañará, Salah! ¡Ya lo has dicho " + shrimpCount + " veces!", files: ["./images/spanishGru.jpg"] })
+                    responded = true;
+                } else if(!responded) {
+                    message.channel.send({ content: "¡Hablar español no funcionará! Se ha mencionado " + shrimpCount + " tomos ahora.", files: ["./images/spanishGru.jpg"] })
+                    responded=true;
                 }
             }
         }
@@ -182,7 +172,7 @@ if (LOAD_SLASH) {
                 }
             });
             if (msgCount % 50 == 0) {
-                message.author.send("What did I say!");
+                message.author.send("Keep doing this and I won't play Valorant with you!");
             }
             if (value == 69) {
                 message.reply("Hey Salah, want to play Valorant?")
