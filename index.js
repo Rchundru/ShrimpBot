@@ -82,6 +82,17 @@ if (LOAD_SLASH) {
             });
             return count;
         }
+        function isMod(id){
+            var mods = fs.readFileSync('./text_files/mods.txt', "utf8").toString()
+            var modsArray = mods.split(":")
+            var isMod = false
+            for(i in modsArray){
+                if(id == modsArray[i]){
+                    isMod=true;
+                }
+            }
+            return isMod;
+        }
         var text = message.content.toLocaleLowerCase();
         var words = text.split(" ");
         var shrimpCount = 0;
@@ -151,6 +162,9 @@ if (LOAD_SLASH) {
         if (text.includes("$about")) {
             message.author.send("A bot created by Rohit & Mitch because Salah is obsessed with shrimp. Will keep track of the number of times shrimp has been said.\nFlip a coin using $coin.\nLearn about shrimp dishes using $dishes."+
             "\nRoll dice using $dice.\nReceive a quote said by a member of this server with $quote, add a new quote to the list with $addquote\nPlay music using /play song or /play search")
+            if(isMod(message.author.id)){
+                message.author.send("Mod commands are:\n$status to change bot status.\n$listquote to see the full list of quotes.")
+            }
         }
         if (text.includes("$coin")) {
             var value = Math.floor(Math.random() * 2);
@@ -206,6 +220,19 @@ if (LOAD_SLASH) {
             }
             
         }
+        if(text.startsWith("$listquote")){
+            if(isMod(message.author.id)){
+                var quotes = fs.readFileSync('./text_files/quotes.txt', "utf8").toString()
+                var quotesArray = quotes.split("::")
+                var output = "";
+                for(var i=0; i<quotesArray.length; i++){
+                    output = output + "["+(i+1)+"] "+quotesArray[i]+"\n";
+                }
+                message.reply(output)
+            }else{
+                message.reply("Sorry, you can't do that.")
+            }
+        }
         if(text.startsWith("$addmod") && message.author.id==218548839903264768){
             var mods = fs.readFileSync('./text_files/mods.txt', "utf8").toString()
             var mod = message.content.substring(8);
@@ -234,15 +261,7 @@ if (LOAD_SLASH) {
             message.reply({content: "POV: You were just baited by Salah", files: ["./images/bait.gif"]})
         }
         if (text.startsWith("$status")) {
-            var mods = fs.readFileSync('./text_files/mods.txt', "utf8").toString()
-            var modsArray = mods.split(":")
-            var isMod = false
-            for(i in modsArray){
-                if(message.author.id == modsArray[i]){
-                    isMod=true;
-                }
-            }
-            if (isMod) {
+            if (isMod(message.author.id)) {
                 var sts = message.content.substring(8);
                 fs.writeFileSync('./text_files/status.txt', sts, function (err) {
                     if (err) {
