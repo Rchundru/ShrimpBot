@@ -227,6 +227,10 @@ if (LOAD_SLASH) {
                 var output = "";
                 for(var i=0; i<quotesArray.length; i++){
                     output = output + "["+(i+1)+"] "+quotesArray[i]+"\n";
+                    if(i%30 ==0 && i!=0){
+                        message.reply(output)
+                        output = ""
+                    }
                 }
                 message.reply(output)
             }else{
