@@ -163,7 +163,7 @@ if (LOAD_SLASH) {
             message.author.send("A bot created by Rohit & Mitch because Salah is obsessed with shrimp. Will keep track of the number of times shrimp has been said.\nFlip a coin using $coin.\nLearn about shrimp dishes using $dishes."+
             "\nRoll dice using $dice.\nReceive a quote said by a member of this server with $quote, add a new quote to the list with $addquote\nPlay music using /play song or /play search")
             if(isMod(message.author.id)){
-                message.author.send("Mod commands are:\n$status to change bot status.\n$listquote to see the full list of quotes.")
+                message.author.send("Mod commands are:\n$status to change bot status.\n$quotelist to see the full list of quotes.")
             }
         }
         if (text.includes("$coin")) {
@@ -189,13 +189,13 @@ if (LOAD_SLASH) {
                 }
             });
             if (msgCount % 50 == 0) {
-                message.author.send("Keep doing this and I won't play Valorant with you!");
+                message.author.send("I thought I warned you.");
             }
             if (value == 69) {
                 message.reply("Hey Salah, want to play Valorant?")
             }
         }
-        if(text.startsWith("$quote")){
+        if(text == "$quote"){
             var quotes = fs.readFileSync('./text_files/quotes.txt', "utf8").toString()
             var quotesArray = quotes.split("::")
             var index =  Math.floor(Math.random() * quotesArray.length)
@@ -220,7 +220,7 @@ if (LOAD_SLASH) {
             }
             
         }
-        if(text.startsWith("$listquote")){
+        if(text.startsWith("$quotelist")){
             if(isMod(message.author.id)){
                 var quotes = fs.readFileSync('./text_files/quotes.txt', "utf8").toString()
                 var quotesArray = quotes.split("::")
