@@ -202,6 +202,10 @@ if (LOAD_SLASH) {
             message.reply(quotesArray[index])
  
         }
+        if(text.includes("undid iridium")){
+            var id = message.author.id;
+            message.reply("Undi Undid Und Undid Ir Iri Irdium ... \nUNSC AI overide instructions active, welcome " + '<@'+id+'>')
+        }
         if(text.startsWith("$addquote")){
             var quotes = fs.readFileSync('./text_files/quotes.txt', "utf8").toString()
             var quote = message.content.substring(10);
