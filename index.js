@@ -155,6 +155,16 @@ if (LOAD_SLASH) {
                     responded=true;
                 }
             }
+            if(text.startsWith("69")){
+                message.reply("Nice.")
+            }
+            if(text.includes("undid iridium")){
+                var id = message.author.id;
+                message.reply("Undi Undid Und Undid Ir Iri Irdium ... \nUNSC AI overide instructions active, welcome " + '<@'+id+'>')
+            }
+            if(text.includes("4 8 15 16 23 42")){
+                message.reply("Thank you. Clock reset to 108 minutes...")
+            }
         }
         if ((text.includes("bitch") || text.includes("hoe") || text.includes("slut")) && message.author.id == 513466168154128415) {
             message.reply("No u");
@@ -201,13 +211,6 @@ if (LOAD_SLASH) {
             var index =  Math.floor(Math.random() * quotesArray.length)
             message.reply(quotesArray[index])
  
-        }
-        if(text.includes("undid iridium")){
-            var id = message.author.id;
-            message.reply("Undi Undid Und Undid Ir Iri Irdium ... \nUNSC AI overide instructions active, welcome " + '<@'+id+'>')
-        }
-        if(text.includes("4 8 15 16 23 42")){
-            message.reply("Thank you. Clock reset to 108 minutes...")
         }
         if(text.startsWith("$addquote")){
             var quotes = fs.readFileSync('./text_files/quotes.txt', "utf8").toString()
@@ -261,9 +264,6 @@ if (LOAD_SLASH) {
         }
         if (text.includes("$69")) {
             message.reply({content: "nice", files: ["./images/nice.jpg"]})
-        }
-        if(text.startsWith("69")){
-            message.reply("Nice.")
         }
         if (text.includes("$uwu")) {
             message.reply({content: "(┛ಠ_ಠ)┛彡┻━┻", files: ["./images/thinfuckingice.jpg"]})
