@@ -206,6 +206,9 @@ if (LOAD_SLASH) {
             var id = message.author.id;
             message.reply("Undi Undid Und Undid Ir Iri Irdium ... \nUNSC AI overide instructions active, welcome " + '<@'+id+'>')
         }
+        if(text.includes("4 8 15 16 23 42")){
+            message.reply("Thank you. Clock reset to 108 minutes...")
+        }
         if(text.startsWith("$addquote")){
             var quotes = fs.readFileSync('./text_files/quotes.txt', "utf8").toString()
             var quote = message.content.substring(10);
