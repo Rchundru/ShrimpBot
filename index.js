@@ -205,16 +205,19 @@ if (LOAD_SLASH) {
                 message.reply("Hey Salah, want to play Valorant?")
             }
         }
-        if(text == "$quote"){
+        if(text == "$quote" || text == "$q"){
             var quotes = fs.readFileSync('./text_files/quotes.txt', "utf8").toString()
             var quotesArray = quotes.split("::")
             var index =  Math.floor(Math.random() * quotesArray.length)
             message.reply(quotesArray[index])
  
         }
-        if(text.startsWith("$addquote")){
+        if(text.startsWith("$addquote") || text.startsWith("$aq")){
             var quotes = fs.readFileSync('./text_files/quotes.txt', "utf8").toString()
             var quote = message.content.substring(10);
+            if(text.startsWith("$aq")){
+                quote = message.content.substring(4);
+            }
             var newQuotes = quotes+"::"+quote
             fs.writeFileSync('./text_files/quotes.txt', newQuotes, function (err) {
                 if (err) {
