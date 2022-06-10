@@ -49,7 +49,8 @@ if (LOAD_SLASH) {
 } else {
     client.on("ready", () => {
         console.log(`Logged in as ${client.user.tag}`)
-        client.user.setActivity(fs.readFileSync('./text_files/status.txt', "utf8").toString()+" $about for help");
+        setInterval(() => {
+        client.user.setActivity(fs.readFileSync('./text_files/status.txt', "utf8").toString()+" $about for help")}, 300000);
     })
     const channelId = "513466762004791302";
     client.on("guildMemberAdd", (member) => {
@@ -274,6 +275,9 @@ if (LOAD_SLASH) {
         if(text.includes("$bait")){
             message.reply({content: "POV: You were just baited by Salah", files: ["./images/bait.gif"]})
         }
+        function readStatus() {
+            client.user.setActivity(fs.readFileSync('./text_files/status.txt', "utf8").toString() + " $about for help");
+          } 
         if (text.startsWith("$status")) {
             if (isMod(message.author.id)) {
                 var sts = message.content.substring(8);
