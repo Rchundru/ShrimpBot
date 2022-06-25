@@ -54,7 +54,7 @@ if (LOAD_SLASH) {
     })
     const channelId = "513466762004791302";
     client.on("guildMemberAdd", (member) => {
-        const message = `Welcome to HinduBoiz <@${member.id}>!`;
+        const message = `Welcome to ${member.guild.name} <@${member.id}>!`;
         const channel = member.guild.channels.cache.get(channelId);
         channel.send({content: message , files: ["./images/hey.jpg"]});
     });
