@@ -167,7 +167,7 @@ if (LOAD_SLASH) {
                 message.reply("Thank you. Clock reset to 108 minutes...")
             }
         }
-        if ((text.includes("bitch") || text.includes("hoe") || text.includes("slut")) && message.author.id == 513466168154128415) {
+        if ((text.includes("bitch") || text.includes("hoe") || text.includes("slut") || text.includes("fatty") || text.includes("pig")) && message.author.id == 513466168154128415) {
             message.reply("No u");
         }
         if (text.includes("$about")) {
