@@ -200,11 +200,16 @@ if (LOAD_SLASH) {
                 }
             });
             if (msgCount % 50 == 0) {
-                message.author.send("I thought I warned you.");
+                message.author.send("HEY WHAT DID I SAY.");
             }
             if (value == 69) {
-                message.reply("Hey Salah, want to play Valorant?")
+                message.reply("Hey Salah, want to play Valorant?");
             }
+        }
+        if(text == "$amazon" && message.author.id == 218548839903264768){
+            client.users.fetch('307281212286828545', false).then((user) => {
+                user.send('So, Amazon?');
+               });
         }
         if(text == "$quote" || text == "$q"){
             var quotes = fs.readFileSync('./text_files/quotes.txt', "utf8").toString()
