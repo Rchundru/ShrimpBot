@@ -1,7 +1,7 @@
 {
   "name": "shrimpbot",
   "version": "1.0.0",
-  "description": "",
+  "description": "A discord bot I made to be used in the discord server I'm primarly present in. Currently it can play music, greet new members, flip a coin, quote the different ways you can cook shrimp\r from Forest Gump, keeps track of the number of times Shrimp has been said, roll dice, give a random quote said by a memeber in the server, and keeps track of the number of times lah700 has said smh. Hosted on SparkedHost.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -16,10 +16,20 @@
     "canvas": "^2.9.1",
     "discord-api-types": "^0.30.0",
     "discord-player": "^5.2.2",
-    "discord.js": "^13.6.0",
+    "discord.js": "^14.2.0",
     "dotenv": "^16.0.0",
     "ffmpeg-static": "^4.4.1",
     "play-dl": "^1.9.4",
     "yt-search": "^2.10.3"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rchundru/ShrimpBot.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/Rchundru/ShrimpBot/issues"
+  },
+  "homepage": "https://github.com/Rchundru/ShrimpBot#readme",
+  "devDependencies": {}
 }

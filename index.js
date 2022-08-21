@@ -6,14 +6,23 @@ const { Routes } = require("discord-api-types/v9")
 const { Player } = require("discord-player")
 var fs = require("fs");
 const TOKEN = fs.readFileSync('./text_files/token.txt', "utf8").toString()
+// const client = new Discord.Client({
+//     intents: [
+//         "GUILDS",
+//         "GUILD_MESSAGES",
+//         "GUILD_VOICE_STATES",
+//         "GUILD_MEMBERS"
+//     ]
+// })
 const client = new Discord.Client({
-    intents: [
-        "GUILDS",
-        "GUILD_MESSAGES",
-        "GUILD_VOICE_STATES",
-        "GUILD_MEMBERS"
+    intents:[
+        "Guilds",
+        "GuildMessages",
+        "GuildVoiceStates",
+        "GuildMembers",
+        "MessageContent"
     ]
-})
+});
 client.slashcommands = new Discord.Collection();
 client.player = new Player(client, {
     ytdlOptions: {
@@ -60,7 +69,8 @@ if (LOAD_SLASH) {
     });
     client.on("interactionCreate", (interaction) => {
         async function handleCommand() {
-            if (!interaction.isCommand()) return
+            //if (!interaction.isCommand()) return
+            if (!interaction.isChatInputCommand()) return
 
             const slashcmd = client.slashcommands.get(interaction.commandName)
             if (!slashcmd) interaction.reply("Not a valid slash command")
