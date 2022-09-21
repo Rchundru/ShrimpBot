@@ -210,7 +210,7 @@ if (LOAD_SLASH) {
                 }
             });
             if (msgCount % 50 == 0) {
-                message.author.send("HEY WHAT DID I SAY.");
+                message.author.send("Stop it.");
             }
             if (value == 69) {
                 message.reply("Hey Salah, want to play Valorant?");

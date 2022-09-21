@@ -20,7 +20,8 @@
     "dotenv": "^16.0.0",
     "ffmpeg-static": "^4.4.1",
     "play-dl": "^1.9.4",
-    "yt-search": "^2.10.3"
+    "yt-search": "^2.10.3",
+    "ytdl-core": "^4.11.2"
   },
   "repository": {
     "type": "git",
@@ -30,6 +31,5 @@
   "bugs": {
     "url": "https://github.com/Rchundru/ShrimpBot/issues"
   },
-  "homepage": "https://github.com/Rchundru/ShrimpBot#readme",
-  "devDependencies": {}
+  "homepage": "https://github.com/Rchundru/ShrimpBot#readme"
 }
