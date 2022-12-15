@@ -1,5 +1,4 @@
-//run using command in terminal: node index.js testing changes
-console.log("test")
+//run using command in terminal: node index.js
 const Discord = require("discord.js")
 const dotenv = require("dotenv")
 const { REST } = require("@discordjs/rest")
