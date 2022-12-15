@@ -65,7 +65,7 @@ if (LOAD_SLASH) {
     client.on("guildMemberAdd", (member) => {
         const message = `Welcome to ${member.guild.name} <@${member.id}>!`;
         const channel = member.guild.channels.cache.get(channelId);
-        channel.send({content: message , files: ["./images/hey.jpg"]});
+        channel.send({content: message , files: ["./images/welcome.gif"]});
     });
     client.on("interactionCreate", (interaction) => {
         async function handleCommand() {
