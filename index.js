@@ -66,7 +66,7 @@ if (LOAD_SLASH) {
         async function greet(){
             let imgOrGif = Math.floor(Math.random() * 2);
             if(imgOrGif==0){
-                let numberOfGifs = 2;
+                let numberOfGifs = 3;
                 let gifIndex = Math.floor(Math.random() * numberOfGifs)+1;
                 const message = `Welcome to ${member.guild.name} <@${member.id}>!`;
                 const channel = member.guild.channels.cache.get(channelId);
@@ -82,7 +82,7 @@ if (LOAD_SLASH) {
                 });
         }
             }else{
-                let numberOfImgs = 2;
+                let numberOfImgs = 3;
                 let imgIndex = Math.floor(Math.random() * numberOfImgs)+1;
                 const message = `Welcome to ${member.guild.name} <@${member.id}>!`;
                 const channel = member.guild.channels.cache.get(channelId);
