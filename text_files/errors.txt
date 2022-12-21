@@ -1,0 +1,1 @@
+Error: ENOENT: no such file or directory, stat 'C:\Users\Rohit\Desktop\ShrimpBot\images\welcomeimgs\830982.jpg'

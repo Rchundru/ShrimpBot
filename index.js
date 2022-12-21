@@ -63,9 +63,44 @@ if (LOAD_SLASH) {
     })
     const channelId = "513466762004791302";
     client.on("guildMemberAdd", (member) => {
-        const message = `Welcome to ${member.guild.name} <@${member.id}>!`;
-        const channel = member.guild.channels.cache.get(channelId);
-        channel.send({content: message , files: ["./images/welcome.gif"]});
+        async function greet(){
+            let imgOrGif = Math.floor(Math.random() * 2);
+            if(imgOrGif==0){
+                let numberOfGifs = 2;
+                let gifIndex = Math.floor(Math.random() * numberOfGifs)+1;
+                const message = `Welcome to ${member.guild.name} <@${member.id}>!`;
+                const channel = member.guild.channels.cache.get(channelId);
+                try{
+                await channel.send({content: message , files: ["./images/welcomegifs/"+gifIndex+".gif"]});
+            }catch(err){
+                const error = `Something went wrong with the greeting message, check error log!`;
+                await channel.send({content: error});
+                fs.writeFileSync('./text_files/errors.txt', err.toString(), function (err) {
+                    if (err) {
+                        return console.error(err);
+                    }
+                });
+        }
+            }else{
+                let numberOfImgs = 2;
+                let imgIndex = Math.floor(Math.random() * numberOfImgs)+1;
+                const message = `Welcome to ${member.guild.name} <@${member.id}>!`;
+                const channel = member.guild.channels.cache.get(channelId);
+                try{
+                await channel.send({content: message , files: ["./images/welcomeimgs/"+imgIndex+".jpg"]});
+                }catch(err){
+                    const error = `Something went wrong with the greeting message, check error log!`;
+                    await channel.send({content: error});
+                    fs.writeFileSync('./text_files/errors.txt', err.toString(), function (err) {
+                        if (err) {
+                            return console.error(err);
+                        }
+                    });
+            }
+            }
+        }
+        greet();
+        
     });
     client.on("interactionCreate", (interaction) => {
         async function handleCommand() {
@@ -226,7 +261,6 @@ if (LOAD_SLASH) {
             var quotesArray = quotes.split("::")
             var index =  Math.floor(Math.random() * quotesArray.length)
             message.reply(quotesArray[index])
- 
         }
         if(text.startsWith("$addquote") || text.startsWith("$aq")){
             var quotes = fs.readFileSync('./text_files/quotes.txt', "utf8").toString()
