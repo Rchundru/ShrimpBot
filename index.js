@@ -35,6 +35,7 @@ const CLIENT_ID = "956578747841134593"
 const GUILD_ID = "513466762004791300"
 const { loadavg } = require("os")
 let commands = []
+let answer='';
 const slashFiles = fs.readdirSync("./slash").filter(file => file.endsWith(".js"))
 for (const file of slashFiles) {
     const slashcmd = require(`./slash/${file}`)
@@ -261,6 +262,25 @@ if (LOAD_SLASH) {
             var quotesArray = quotes.split("::")
             var index =  Math.floor(Math.random() * quotesArray.length)
             message.reply(quotesArray[index])
+        }
+        if(text == "$guess" || text == '$g'){
+            if(this.answer!='' && this.answer != undefined){
+                message.reply("The person who said the previous quote was: "+this.answer);
+            }
+            var quotes = fs.readFileSync('./text_files/quotes.txt', "utf8").toString()
+            var quotesArray = quotes.split("::")
+            var index =  Math.floor(Math.random() * quotesArray.length);
+            while(index == 127 || index == 110){
+                index =  Math.floor(Math.random() * quotesArray.length);
+            }
+            var charIndex = quotesArray[index].lastIndexOf('-');
+            var mysteryQuote = quotesArray[index].substring(0,charIndex);
+            this.answer = quotesArray[index].substring(charIndex);
+            message.reply(mysteryQuote);
+        }
+        if(text == '$answer' || text == '$a'){
+            message.reply(this.answer);
+            this.answer='';
         }
         if(text.startsWith("$addquote") || text.startsWith("$aq")){
             var quotes = fs.readFileSync('./text_files/quotes.txt', "utf8").toString()
