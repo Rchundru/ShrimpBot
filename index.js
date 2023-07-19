@@ -279,8 +279,12 @@ if (LOAD_SLASH) {
             message.reply(mysteryQuote);
         }
         if(text == '$answer' || text == '$a'){
-            message.reply(this.answer);
-            this.answer='';
+            if(this.answer=='' || this.answer == undefined){
+                message.reply("There was no mystery quote given, type $g to receive a mystery quote.")
+            }else{
+                message.reply(this.answer);
+                this.answer='';
+            }
         }
         if(text.startsWith("$addquote") || text.startsWith("$aq")){
             var quotes = fs.readFileSync('./text_files/quotes.txt', "utf8").toString()
