@@ -246,10 +246,16 @@ if (LOAD_SLASH) {
                 }
             });
             if (msgCount % 50 == 0) {
-                message.author.send("Stop it.");
+                message.author.send("I said stop!");
             }
             if (value == 69) {
                 message.reply("Hey Salah, want to play Valorant?");
+            }
+        }
+        if(message.author.id == 513466168154128415){
+            var value = Math.floor(Math.random() * 20);
+            if(value == 10){
+                message.author.send({ files: ["./images/shutyourmouth.jpg"] })
             }
         }
         if(text == "$amazon" && message.author.id == 218548839903264768){
