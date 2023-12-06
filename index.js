@@ -36,6 +36,19 @@ const GUILD_ID = "513466762004791300"
 const { loadavg } = require("os")
 let commands = []
 let answer='';
+const users = new Map();
+users.set("281654104554733568","Tom");
+users.set("484457782217801749", "Phi");
+users.set("369581203357171724","Andrea");
+users.set("305539077627838476", "Nick");
+users.set("513466168154128415", "Arvind");
+users.set("270010483745095691", "John");
+users.set("249753185739079681", "Ryan");
+users.set("249753941535883264", "Salah");
+users.set("307281212286828545", "Mitch");
+users.set("768256518112935957", "Amanda");
+users.set("218548839903264768", "Rohit");
+
 const slashFiles = fs.readdirSync("./slash").filter(file => file.endsWith(".js"))
 for (const file of slashFiles) {
     const slashcmd = require(`./slash/${file}`)
@@ -264,10 +277,19 @@ if (LOAD_SLASH) {
                });
         }
         if(text == "$quote" || text == "$q"){
+            // if(users.has(message.author.id)){
+            //     var quotes = fs.readFileSync('./text_files/quotes.txt', "utf8").toString()
+            //     var quotesArray = quotes.split("::")
+            //     var index =  Math.floor(Math.random() * quotesArray.length)
+            //     var selectedQuote = quotesArray[index]
+            //     var splitQuote = selectedQuote.split("-")
+            //     message.reply(splitQuote[0]+"-"+users.get(message.author.id));
+            // }else{
             var quotes = fs.readFileSync('./text_files/quotes.txt', "utf8").toString()
             var quotesArray = quotes.split("::")
             var index =  Math.floor(Math.random() * quotesArray.length)
             message.reply(quotesArray[index])
+            //}
         }
         if(text == "$guess" || text == '$g'){
             if(this.answer!='' && this.answer != undefined){
