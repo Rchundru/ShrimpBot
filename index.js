@@ -292,7 +292,6 @@ if (LOAD_SLASH) {
             //}
         }
 	if(text == "$quote salah" || text == "$q salah"){
-        console.log("hit")
 	    var quotes = fs.readFileSync('./text_files/quotes.txt', "utf8").toString()
 	    var salahArray = quotes.split("::").filter(quote => quote.toLowerCase().endsWith("-salah"))
 	    var index = Math.floor(Math.random() * salahArray.length)
