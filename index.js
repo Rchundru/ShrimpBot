@@ -291,6 +291,12 @@ if (LOAD_SLASH) {
             message.reply(quotesArray[index])
             //}
         }
+	if(text.toLowerCase == "$quote salah" || text.toLowerCase == "$q salah"){
+	    var quotes = fs.readFileSync('./text_files/quotes.txt', "utf8").toString()
+	    var salahArray = quotes.split("::").filter(quote => quote.toLowerCase.endsWith("salah"))
+	    var index = Math.floor(Math.random() * salahArray.length)
+	    message.reply(salahArray[index])
+	}
         if(text == "$guess" || text == '$g'){
             if(this.answer!='' && this.answer != undefined){
                 message.reply("The person who said the previous quote was: "+this.answer);
