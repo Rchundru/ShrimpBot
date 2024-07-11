@@ -406,3 +406,15 @@ if (LOAD_SLASH) {
     })
     client.login(TOKEN)
 }
+
+const { AuditLogEvent, Events } = require('discord.js');
+
+client.on(Events.GuildAuditLogEntryCreate, async auditLog => {
+    const { action, executorId, targetId } = auditLog;
+    if (action !== AuditLogEvent.MemberMove) return;
+    const executor = await client.users.fetch(executorId);
+
+    if(executor.tag == 513466168154128415) {
+        message.author.send({ files: ["./images/arvind.jpg"] })
+    }
+});
