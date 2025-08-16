@@ -297,7 +297,7 @@ if (LOAD_SLASH) {
 	    var index = Math.floor(Math.random() * salahArray.length)
 	    message.reply(salahArray[index])
 	}
-    if(text == "$rlq"){ // Removes Last Quote placed in the array. Useful if we misquote/mistype something.
+    if(text == "$rlq" && message.author.id == 218548839903264768 || message.author.id == 307281212286828545){ // Removes Last Quote placed in the array. Useful if we misquote/mistype something.
         var quotes = fs.readFileSync('./text_files/quotes.txt', "utf8").toString()
         var quotesArray = quotes.split("::").pop()
         
