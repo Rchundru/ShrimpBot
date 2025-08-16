@@ -233,7 +233,7 @@ if (LOAD_SLASH) {
             message.author.send("A bot created by Rohit & Mitch because Salah is obsessed with shrimp. Will keep track of the number of times shrimp has been said.\nFlip a coin using $coin.\nLearn about shrimp dishes using $dishes."+
             "\nRoll dice using $dice.\nReceive a quote said by a member of this server with $quote, add a new quote to the list with $addquote\nPlay music using /play song or /play search")
             if(isMod(message.author.id)){
-                message.author.send("Mod commands are:\n$status to change bot status.\n$quotelist to see the full list of quotes.")
+                message.author.send("Mod commands are:\n$status to change bot status.\n$quotelist to see the full list of quotes.\n$rlq to remove last quote from quote list.")
             }
         }
         if (text.includes("$coin")) {
@@ -265,12 +265,12 @@ if (LOAD_SLASH) {
                 message.reply("Hey Salah, want to play Valorant?");
             }
         }
-        if(message.author.id == 513466168154128415){
-            var value = Math.floor(Math.random() * 20);
-            if(value == 10){
-                message.author.send({ files: ["./images/shutyourmouth.jpg"] })
-            }
-        }
+        // if(message.author.id == 513466168154128415){
+        //     var value = Math.floor(Math.random() * 20);
+        //     if(value == 10){
+        //         message.author.send({ files: ["./images/shutyourmouth.jpg"] })
+        //     }
+        // }
         if(text == "$amazon" && message.author.id == 218548839903264768){
             client.users.fetch('307281212286828545', false).then((user) => {
                 user.send('So, Amazon?');
@@ -299,14 +299,23 @@ if (LOAD_SLASH) {
 	}
     if(text == "$rlq" && message.author.id == 218548839903264768 || message.author.id == 307281212286828545){ // Removes Last Quote placed in the array. Useful if we misquote/mistype something.
         var quotes = fs.readFileSync('./text_files/quotes.txt', "utf8").toString()
-        var quotesArray = quotes.split("::").pop()
+        var quotesArray = quotes.split("::")
+        var removedQuote = quotesArray[quotesArray.length-1]
+        quotesArray.pop()
+        var allQuotes=quotesArray[0];
+        for(let i=1; i<quotesArray.length; i++){
+            allQuotes=allQuotes+"::"+quotesArray[i]
+        }
         
         var newQuotes = quotes+"::"+quote
-        fs.writeFileSync('./text_files/quotes.txt', quotesArray, function (err) {
+        fs.writeFileSync('./text_files/quotes.txt', allQuotes, function (err) {
             if (err) {
                 return console.error(err);
             }
         });
+        message.reply("Removed "+removedQuote+" from the list.")
+    }else{
+        message.reply("no")
     }
         if(text == "$guess" || text == '$g'){
             if(this.answer!='' && this.answer != undefined){
@@ -417,15 +426,3 @@ if (LOAD_SLASH) {
     })
     client.login(TOKEN)
 }
-
-const { AuditLogEvent, Events } = require('discord.js');
-
-client.on(Events.GuildAuditLogEntryCreate, async auditLog => {
-    const { action, executorId, targetId } = auditLog;
-    if (action !== AuditLogEvent.MemberMove) return;
-    const executor = await client.users.fetch(executorId);
-
-    if(executor.tag == 513466168154128415) {
-        message.author.send({ files: ["./images/arvind.jpg"] })
-    }
-});
