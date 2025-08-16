@@ -300,7 +300,7 @@ if (LOAD_SLASH) {
         let raceArray = ["black", "chinese", "spanish", "hispanic", "dark", "african", "asian"] 
 	    message.reply(salahQuote)
 
-        let lowerSalah = salahQuote.toLowerCase
+        var lowerSalah = salahQuote.toLowerCase()
         for (const race of raceArray) {
             if(lowerSalah.includes(race)) {
                 message.reply("Yikes, that is a bit racy Salah...")
@@ -308,7 +308,7 @@ if (LOAD_SLASH) {
             }
         }
 	}
-    if(text == "$rlq" && message.author.id == 218548839903264768 || message.author.id == 307281212286828545){ // Removes Last Quote placed in the array. Useful if we misquote/mistype something.
+    if(text == "$rlq" && (message.author.id == 218548839903264768 || message.author.id == 307281212286828545)){ // Removes Last Quote placed in the array. Useful if we misquote/mistype something.
         var quotes = fs.readFileSync('./text_files/quotes.txt', "utf8").toString()
         var quotesArray = quotes.split("::")
         var removedQuote = quotesArray[quotesArray.length-1]
@@ -325,7 +325,8 @@ if (LOAD_SLASH) {
             }
         });
         message.reply("Removed "+removedQuote+" from the list.")
-    }else{
+    }
+    if(text == "$rlq" && !(message.author.id == 218548839903264768 || message.author.id == 307281212286828545)){
         message.reply("no")
     }
         if(text == "$guess" || text == '$g'){
