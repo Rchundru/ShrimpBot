@@ -295,7 +295,18 @@ if (LOAD_SLASH) {
 	    var quotes = fs.readFileSync('./text_files/quotes.txt', "utf8").toString()
 	    var salahArray = quotes.split("::").filter(quote => quote.toLowerCase().endsWith("-salah"))
 	    var index = Math.floor(Math.random() * salahArray.length)
-	    message.reply(salahArray[index])
+        var salahQuote = salahArray[index]
+        //An array of races salah has been quoted saying
+        let raceArray = ["black", "chinese", "spanish", "hispanic", "dark", "african", "asian"] 
+	    message.reply(salahQuote)
+
+        let lowerSalah = salahQuote.toLowerCase
+        for (const race of raceArray) {
+            if(lowerSalah.includes(race)) {
+                message.reply("Yikes, that is a bit racy Salah...")
+                break;
+            }
+        }
 	}
     if(text == "$rlq" && message.author.id == 218548839903264768 || message.author.id == 307281212286828545){ // Removes Last Quote placed in the array. Useful if we misquote/mistype something.
         var quotes = fs.readFileSync('./text_files/quotes.txt', "utf8").toString()
