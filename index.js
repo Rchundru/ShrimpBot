@@ -297,7 +297,7 @@ if (LOAD_SLASH) {
 	    var index = Math.floor(Math.random() * salahArray.length)
         var salahQuote = salahArray[index]
         //An array of races salah has been quoted saying
-        let raceArray = ["black", "chinese", "spanish", "hispanic", "dark", "african", "asian"] 
+        let raceArray = ["black", "chinese", "spanish", "hispanic", "dark", "african", "asian"," jew"] 
 	    message.reply(salahQuote)
 
         var lowerSalah = salahQuote.toLowerCase()
