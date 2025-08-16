@@ -385,7 +385,9 @@ if (LOAD_SLASH) {
                         output = ""
                     }
                 }
-                message.reply(output)
+                if(output != ""){
+                    message.reply(output)
+                }
             }else{
                 message.reply("Sorry, you can't do that.")
             }
